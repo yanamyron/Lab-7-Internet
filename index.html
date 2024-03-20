@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang ="en-US">
+<head>
+<meta charset ="UTF-8">
+<title></title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yv06HppcZGetbYMGWSFlBw8H:
+crossorigin="anonymous"></script>
+</head>
+<body>
+num1 =<input type="text" id="num1"></input><br>
+num2=<input type="text" id="num2"></input><br>
+<input type="button" value="Click" onClick="onClicks()">
+<div class="results"></div>
+<script>
+function onClicks(){
+    let n1=$('#num1').val();
+    let n2=$('#num2').val();
+    $.ajax({
+        type:'POST',
+        url:'http://localhost/a1.php',
+        data:'num1='+n1+'&num2='+n2,
+        success:function(data){
+            $('.results').html(data);
+        }
+    });
+}
+</script>
+</body>
+</html>

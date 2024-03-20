@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Ідеальна вага</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yv06HppcZGetbYMGWSFlBw8H:
+crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="idealWeightForm">
+        <input type="radio" name="sex" value="man" checked>Чоловік</input>
+        <input type="radio" name="sex" value="woman">Жінка</input><br>
+        Зріст (см): <input type="text" id="height" name="height"></input><br>
+        <input type="button" value="Ідеальна вага" onClick="calculateIdealWeight()">
+    </form>
+    <div class="results"></div>
+
+<script>
+function calculateIdealWeight() {
+    let sex = $('input[name="sex"]:checked').val();
+    let height = $('#height').val();
+    
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/a3.php',
+        data: {sex: sex, height: height},
+        success: function(data) {
+            $('.results').html(data);
+        }
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yv06HppcZGetbYMGWSFlBw8H:
+crossorigin="anonymous"></script>
+</head>
+<body>
+    Введіть ваш рік народження: <input type="text" id="birthYear"></input><br>
+    <input type="button" value="Підтвердити" onClick="calculateAge()">
+    <div class="results"></div>
+
+<script>
+function calculateAge() {
+    let year = $('#birthYear').val();
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost/a2.php',
+        data: 'year=' + year,
+        success: function(data) {
+            $('.results').html(data);
+        }
+    });
+}
+</script>
+</body>
+</html>
